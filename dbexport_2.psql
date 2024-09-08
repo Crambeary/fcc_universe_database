@@ -26,8 +26,9 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.black_hole (
     black_hole_id integer NOT NULL,
-    name character varying(40),
-    galaxy_id integer
+    name character varying(40) NOT NULL,
+    galaxy_id integer,
+    type text NOT NULL
 );
 
 
@@ -257,8 +258,8 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 -- Data for Name: black_hole; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.black_hole (black_hole_id, name, galaxy_id) FROM stdin;
-1	Sag A*	1
+COPY public.black_hole (black_hole_id, name, galaxy_id, type) FROM stdin;
+1	Sag A*	1	Supermassive Black Hole
 \.
 
 
