@@ -225,7 +225,7 @@ Milky Way	\N	\N	327000000000000000000000000000000000000000000000000000000000000	
 --
 
 COPY public.moon (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, moon_id, planet_id) FROM stdin;
-Moon	400	1700	0.2725	Oxygen	t	t	1	\N
+Moon	400	1700	0.2725	Oxygen	t	t	1	2
 \.
 
 
@@ -234,7 +234,8 @@ Moon	400	1700	0.2725	Oxygen	t	t	1	\N
 --
 
 COPY public.planet (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, planet_id, star_id) FROM stdin;
-Jupiter	\N	\N	1321	Hydrogen	t	f	1	\N
+Earth	288	5700	1	Oxygen	t	t	2	1
+Jupiter	\N	\N	1321	Hydrogen	t	f	1	1
 \.
 
 
@@ -243,7 +244,7 @@ Jupiter	\N	\N	1321	Hydrogen	t	f	1	\N
 --
 
 COPY public.star (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, star_id, galaxy_id) FROM stdin;
-Sol	5778	15000000	1300000	Hydrogen	t	f	1	\N
+Sol	5778	15000000	1300000	Hydrogen	t	f	1	1
 \.
 
 
@@ -265,7 +266,7 @@ SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, true);
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 1, true);
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 2, true);
 
 
 --
