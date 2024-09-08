@@ -268,6 +268,7 @@ COPY public.black_hole (black_hole_id, name, galaxy_id) FROM stdin;
 
 COPY public.galaxy (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, galaxy_id) FROM stdin;
 Milky Way	\N	\N	327000000000000000000000000000000000000000000000000000000000000	Hydrogen	t	t	1
+Andromeda	\N	\N	143000000000000000000000000000000000000000	Hydrogen	t	f	2
 \.
 
 
@@ -310,7 +311,7 @@ SELECT pg_catalog.setval('public.black_hole_black_hole_id_seq', 1, true);
 -- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 1, true);
+SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 2, true);
 
 
 --
