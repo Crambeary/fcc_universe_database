@@ -260,6 +260,8 @@ ALTER TABLE ONLY public.star ALTER COLUMN star_id SET DEFAULT nextval('public.st
 
 COPY public.black_hole (black_hole_id, name, galaxy_id, type) FROM stdin;
 1	Sag A*	1	Supermassive Black Hole
+2	RX J1131-1231	\N	Supermassive black hole
+3	TON 618	\N	Supermassive black hole
 \.
 
 
@@ -270,6 +272,10 @@ COPY public.black_hole (black_hole_id, name, galaxy_id, type) FROM stdin;
 COPY public.galaxy (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, galaxy_id) FROM stdin;
 Milky Way	\N	\N	327000000000000000000000000000000000000000000000000000000000000	Hydrogen	t	t	1
 Andromeda	\N	\N	143000000000000000000000000000000000000000	Hydrogen	t	f	2
+M82	\N	\N	30000000000	Hydrogen	f	f	3
+Pinwheel Galaxy	\N	\N	30000000000	Hydrogen	f	f	4
+Tadpole Galaxy	\N	\N	30000000000	Hydrogen	f	f	5
+Sombrero Galaxy	\N	\N	30000000000	Hydrogen	f	f	6
 \.
 
 
@@ -279,6 +285,27 @@ Andromeda	\N	\N	143000000000000000000000000000000000000000	Hydrogen	t	f	2
 
 COPY public.moon (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, moon_id, planet_id) FROM stdin;
 Moon	400	1700	0.2725	Oxygen	t	t	1	2
+Phobos	233	\N	0.01	\N	f	f	2	3
+Deimos	233	\N	0.01	\N	f	f	3	3
+Io	110	\N	0.01	Sulfer Dioxide	f	f	4	1
+Europa	102	\N	0.01	\N	f	f	6	1
+Ganymede	110	\N	0.01	Oxygen	f	f	7	1
+Callisto	110	\N	0.01	Carbon Dioxide	f	f	8	1
+Mimas	64	\N	0.01	Carbon Dioxide	f	f	9	1
+Enceladus	64	\N	0.01	Carbon Dioxide	f	f	11	6
+Tethys	64	\N	0.01	Carbon Dioxide	f	f	12	6
+Dione	64	\N	0.01	Carbon Dioxide	f	f	13	6
+Rhea	64	\N	0.01	Carbon Dioxide	f	f	14	6
+Titan	64	\N	0.01	Carbon Dioxide	f	f	15	6
+Hyperion	64	\N	0.01	Carbon Dioxide	f	f	16	6
+Iapetus	64	\N	0.01	Carbon Dioxide	f	f	17	6
+Epimetheus	64	\N	0.01	Carbon Dioxide	f	f	18	6
+Calypso	64	\N	0.01	Carbon Dioxide	f	f	19	6
+Prometheus	64	\N	0.01	Carbon Dioxide	f	f	20	6
+Ariel	64	\N	0.01	Carbon Dioxide	f	f	21	7
+Umbriel	64	\N	0.01	Carbon Dioxide	f	f	22	7
+Titania	64	\N	0.01	Carbon Dioxide	f	f	23	7
+Oberon	64	\N	0.01	Carbon Dioxide	f	f	24	7
 \.
 
 
@@ -289,6 +316,16 @@ Moon	400	1700	0.2725	Oxygen	t	t	1	2
 COPY public.planet (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, planet_id, star_id) FROM stdin;
 Earth	288	5700	1	Oxygen	t	t	2	1
 Jupiter	\N	\N	1321	Hydrogen	t	f	1	1
+Mars	209	\N	0.151	Carbon Dioxide	t	t	3	1
+Mercury	437	\N	0.056	Oxygen	t	f	4	1
+Venus	232	\N	0.9499	Carbon Dioxide	t	f	5	1
+Saturn	134	\N	9.449	Hydrogen	t	f	6	1
+Uranus	76	\N	4.007	Hydrogen	t	f	7	1
+Neptune	72	\N	3.829	Hydrogen	t	f	8	1
+Pluto	44	\N	0.1868	Nitrogen	t	f	9	1
+Ceres	235	\N	0.00016	Water Ice	f	f	10	1
+Orcus	44	\N	0.015	\N	f	f	11	1
+Gonggong	\N	\N	0.01	\N	f	f	12	1
 \.
 
 
@@ -298,6 +335,11 @@ Jupiter	\N	\N	1321	Hydrogen	t	f	1	1
 
 COPY public.star (name, surface_temperature_k, center_temperature_k, volume_in_earths, primary_element, visible_without_telescope, in_habitable_zone, star_id, galaxy_id) FROM stdin;
 Sol	5778	15000000	1300000	Hydrogen	t	f	1	1
+Alpha Centari	5790	\N	1800000	Hydrogen	t	t	2	1
+Barnads Star	3134	\N	2.7	Hydrogen	t	t	3	1
+Luhman 16	1350	\N	9.35	Hydrogen	t	t	4	1
+Wolf 395	1350	\N	9.35	Hydrogen	t	t	5	1
+Sirius	9940	\N	9.35	Hydrogen	t	t	6	1
 \.
 
 
@@ -305,35 +347,35 @@ Sol	5778	15000000	1300000	Hydrogen	t	f	1	1
 -- Name: black_hole_black_hole_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.black_hole_black_hole_id_seq', 1, true);
+SELECT pg_catalog.setval('public.black_hole_black_hole_id_seq', 3, true);
 
 
 --
 -- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 2, true);
+SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 6, true);
 
 
 --
 -- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, true);
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 24, true);
 
 
 --
 -- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 2, true);
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 12, true);
 
 
 --
 -- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.star_star_id_seq', 1, true);
+SELECT pg_catalog.setval('public.star_star_id_seq', 6, true);
 
 
 --
